@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Patient Details</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&display=swap');
+
+  body {
+    background: url('https://www.transparenttextures.com/patterns/wood-pattern.png') repeat;
+    font-family: 'Roboto Slab', serif;
+    color: #5b3a29;
+    padding: 4rem 1rem;
+  }
+  h2 {
+    font-weight: 700;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #7c4a2d;
+    text-shadow: 1px 1px 0 #d9b08c;
+  }
+  #patientDetail {
+    max-width: 650px;
+    margin: auto;
+    background: #f5e6d3dd;
+    padding: 3rem 3.5rem;
+    border-radius: 25px;
+    box-shadow: 8px 8px 24px #a67c52aa;
+    border: 2px solid #d9b08c;
+  }
+  p {
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #d9b08c;
+    padding-bottom: 0.6rem;
+  }
+  strong {
+    font-weight: 700;
+    color: #a05c31;
+    min-width: 140px;
+    display: inline-block;
+  }
+  a.btn-secondary {
+    display: block;
+    max-width: 180px;
+    margin: 3rem auto 0;
+    padding: 0.9rem 2.5rem;
+    background: #a05c31;
+    color: #f5e6d3;
+    border-radius: 50px;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 8px 20px #7c4a2d88;
+    transition: background-color 0.3s ease;
+  }
+  a.btn-secondary:hover {
+    background: #7c4a2d;
+  }
+</style>
+
+</head>
+<body class="bg-light">
+  <div class="container">
+    <h2>Patient Full Details</h2>
+    <div id="patientDetail" class="mt-4">
+      <!-- Patient info will appear here -->
+    </div>
+    <a href="patients.html" class="btn btn-secondary mt-3">← Back to Patients</a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      const id = parseInt(params.get('id'));
+      const appointments = JSON.parse(localStorage.getItem('appointments')) || [];
+      const patient = appointments.find(p => p.id === id);
+
+      const detailDiv = document.getElementById('patientDetail');
+
+      if (!patient) {
+        detailDiv.innerHTML = '<div class="alert alert-danger">Patient not found.</div>';
+        return;
+      }
+
+      detailDiv.innerHTML = `
+        <p><strong>ID:</strong> ${patient.id}</p>
+        <p><strong>Name:</strong> ${patient.patientName}</p>
+        <p><strong>Age:</strong> ${patient.age}</p>
+        <p><strong>Contact:</strong> ${patient.contact}</p>
+        <p><strong>Height:</strong> ${patient.height} cm</p>
+        <p><strong>Weight:</strong> ${patient.weight} kg</p>
+        <p><strong>BMI:</strong> ${patient.bmi}</p>
+        <p><strong>Blood Group:</strong> ${patient.bloodGroup}</p>
+        <p><strong>Category:</strong> ${patient.category}</p>
+        <p><strong>Gender:</strong> ${patient.gender}</p>
+        <p><strong>Date:</strong> ${patient.date}</p>
+        <p><strong>Time:</strong> ${patient.time}</p>
+        <p><strong>Reason:</strong> ${patient.reason || 'N/A'}</p>
+        <p><strong>Created At:</strong> ${new Date(patient.createdAt).toLocaleString()}</p>
+      `;
+    });
+  </script>
+</body>
+</html>

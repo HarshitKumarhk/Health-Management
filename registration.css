@@ -1,0 +1,114 @@
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      margin: 0;
+      background-image: url('1.jpg');
+      background-size: cover; 
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      color: #333;
+    }
+
+    .form-container {
+      background: #fff;
+      border-radius: 15px;
+      padding: 40px 35px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+      transition: transform 0.3s ease;
+    }
+    .form-container:hover {
+      transform: translateY(-5px);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #0047ab;
+      font-weight: 700;
+      letter-spacing: 1.2px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #555;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    select {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 20px;
+      border: 2px solid #ddd;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="password"]:focus,
+    select:focus {
+      border-color: #0047ab;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 71, 171, 0.4);
+    }
+
+    button {
+      width: 100%;
+      padding: 14px 0;
+      background-color: #0047ab;
+      border: none;
+      border-radius: 10px;
+      color: white;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      box-shadow: 0 6px 12px rgba(0, 71, 171, 0.4);
+    }
+
+    button:hover {
+      background-color: #002d75;
+      box-shadow: 0 8px 16px rgba(0, 45, 117, 0.6);
+    }
+
+    p {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 15px;
+      color: #222;
+    }
+
+    p a {
+      color: #0047ab;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    p a:hover {
+      color: #002d75;
+      text-decoration: underline;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 480px) {
+      .form-container {
+        padding: 30px 20px;
+      }
+      button {
+        font-size: 16px;
+        padding: 12px 0;
+      }
+    }
